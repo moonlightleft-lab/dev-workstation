@@ -1,3 +1,33 @@
+## 핵심 용어 정리
+
+### 1. 터미널 · 파일 · 권한 관련 용어
+* **터미널(Terminal) / CLI**: 마우스 클릭 대신 글자(명령어)로 컴퓨터와 대화하는 창입니다. (예: PowerShell, bash)
+* **절대 경로**: 최상위 기준(`C:\` 또는 `/`)부터 시작하는 전체 주소입니다. 어디서 명령하든 같은 위치를 가리킵니다. (예: `C:\test\집\dev-workstation`)
+* **상대 경로**: 현재 내 위치를 기준으로 삼는 짧은 주소입니다. `.`은 현재 폴더, `..`은 한 단계 위 폴더를 뜻합니다. (예: `./README.md`)
+* **파일 권한(`r`, `w`, `x`)**: 파일이나 폴더를 누가 어떻게 다룰 수 있는지 정한 규칙입니다. `r`(읽기, 4), `w`(쓰기, 2), `x`(실행, 1)를 더해서 `755`나 `644` 같은 숫자로 표현합니다.
+
+### 2. Docker · 컨테이너 · 스토리지 관련 용어
+* **Docker(도커)**: 앱과 그 앱이 돌아가는 데 필요한 환경(설정, 라이브러리 등)을 한데 묶어 어디서든 똑같이 실행되게 해주는 도구입니다.
+* **이미지(Image)**: 컨테이너를 찍어내기 위한 설계도(틀)입니다. 한 번 만들어지면 기본 틀은 변하지 않습니다.
+* **컨테이너(Container)**: 이미지를 바탕으로 실제로 실행 중인 프로그램 공간입니다. 껐다 켜거나 지울 수 있고, 같은 이미지로 여러 개를 띄울 수 있습니다.
+* **Dockerfile**: 도커 이미지를 어떻게 만들지 적어 둔 레시피(설명서) 파일입니다. (`FROM`, `COPY` 같은 명령어로 구성)
+* **OrbStack**: 컨테이너를 가볍고 빠르게 실행하게 해주는 도구입니다. `sudo` 권한이 제한된 환경에서도 별도 관리자 권한 없이 Docker 엔진을 쓰기 위해 활용됩니다.
+* **포트 매핑(`-p 8080:5000`)**: 내 컴퓨터(호스트)의 문(`8080`)과 컨테이너 안의 문(`5000`)을 연결하는 것입니다. 그래야 브라우저에서 `localhost:8080`으로 접속해 컨테이너 안 앱을 볼 수 있습니다[cite: 1].
+* **바인드 마운트(Bind Mount)**: 내 컴퓨터의 특정 폴더를 컨테이너 안 폴더와 직접 연결하는 방식입니다. 내 컴퓨터에서 파일을 수정하면 컨테이너에도 바로 반영됩니다[cite: 1].
+* **볼륨(Volume)**: 도커가 직접 관리하는 데이터 저장 공간입니다. 컨테이너를 삭제(`docker rm`)해도 볼륨에 저장된 데이터는 지워지지 않고 남아 있습니다.
+
+### 3. Git · GitHub · 협업 관련 용어
+* **Git(깃)**: 내 컴퓨터에서 코드 변경 이력을 버전별로 저장하고 관리하는 프로그램입니다. ("언제, 누가, 무엇을 바꿨는지" 기록)
+* **GitHub(깃허브)**: Git으로 관리하는 코드를 인터넷(클라우드)에 올려두고 공유·협업하는 웹사이트/플랫폼입니다.
+* **저장소(Repository, Repo)**: 코드와 변경 이력, 문서, 이미지 등이 모여 있는 프로젝트 폴더 단위 공간입니다. 내 컴퓨터에 있으면 로컬 저장소, GitHub에 있으면 원격 저장소(`origin`)라고 부릅니다.
+* **브랜치(Branch)**: 작업 갈래(줄기)입니다. 보통 대표 갈래를 `main`이라고 부릅니다.
+* **`git add` / `commit` / `push`**: `add`는 이번에 저장할 파일 고르기, `commit`은 버전 스냅샷 찍기(내 컴퓨터에 기록), `push`는 GitHub 원격 저장소에 올리기입니다.
+* **`git pull` / 병합(Merge)**: `pull`은 GitHub에 올라온 최신 내용을 내 컴퓨터로 가져오는 것이고, `merge`는 두 작업 내역을 하나로 합치는 과정입니다.
+* **충돌(Conflict)**: 같은 파일의 같은 부분을 서로 다르게 수정해서 Git이 어느 쪽을 살릴지 자동으로 결정하지 못할 때 발생하는 상황입니다.
+* **LF / CRLF**: 줄바꿈 문자를 표시하는 방식 차이입니다. Windows(`CRLF`)와 Linux/macOS(`LF`)가 달라서 Git에서 안내 경고가 뜨기도 합니다.
+
+
+
 # 내 컴퓨터에 개발자용 '작업실' 꾸미기
 
 ## 1. 프로젝트 개요 및 미션 목표
@@ -191,34 +221,100 @@ warning: in the working copy of 'permission-test/sample.txt', LF will be replace
 - [ ] **보너스 4 (환경 변수 활용)**: 환경 변수로 포트/모드 제어(설정과 코드의 분리)
 - [ ] **보너스 5 (GitHub SSH 키 설정)**: SSH 키 등록 및 푸시 동작 확인
 
+# 파일/폴더 생성·이동·삭제 명령과 그 출력(mkkir,mv,rm등) 실행 증거
+PS C:\test\집> cd dev-workstation
+PS C:\test\집\dev-workstation> mkdir test-dir
+
+
+    디렉터리: C:\test\집\dev-workstation
+
+
+Mode                 LastWriteTime         Length Name                    
+----                 -------------         ------ ----                    
+d-----      2026-11-20  오전 11:21                test-dir                
+
+
+PS C:\test\집\dev-workstation> New-Item -ItemType File -Path ".\test-dir\sample.txt" -Value "hello"
+
+
+    디렉터리: C:\test\집\dev-workstation\test-dir
+
+
+Mode                 LastWriteTime         Length Name                    
+----                 -------------         ------ ----                    
+-a----      2026-11-20  오전 11:21              5 sample.txt              
+
+
+PS C:\test\집\dev-workstation> dir .\test-dir
+
+
+    디렉터리: C:\test\집\dev-workstation\test-dir
+
+
+Mode                 LastWriteTime         Length Name                    
+----                 -------------         ------ ----                    
+-a----      2026-11-20  오전 11:21              5 sample.txt              
+
+
+PS C:\test\집\dev-workstation> mkdir move-dir
+
+
+    디렉터리: C:\test\집\dev-workstation
+
+
+Mode                 LastWriteTime         Length Name                    
+----                 -------------         ------ ----                    
+d-----      2026-11-20  오전 11:22                move-dir                
+
+
+PS C:\test\집\dev-workstation> mv .\test-dir\sample.txt .\move-dir\sample-moved.txt -Verbose
+자세한 정보 표시: 대상 "항목: 
+C:\test\집\dev-workstation\test-dir\sample.txt 대상: 
+C:\test\집\dev-workstation\move-dir\sample-moved.txt"에서 "파일 이동" 
+작업을 수행합니다.
+PS C:\test\집\dev-workstation> dir .\move-dir
+
+
+    디렉터리: C:\test\집\dev-workstation\move-dir
+
+
+Mode                 LastWriteTime         Length Name                    
+----                 -------------         ------ ----                    
+-a----      2026-11-20  오전 11:21              5 sample-moved.txt        
+
+
+PS C:\test\집\dev-workstation> rm .\move-dir\sample-moved.txt -Verbose
+자세한 정보 표시: 대상 
+"C:\test\집\dev-workstation\move-dir\sample-moved.txt"에서 "파일 제거" 
+작업을 수행합니다.
+PS C:\test\집\dev-workstation> rm .\test-dir, .\move-dir -Recurse -Force -Verbose
+자세한 정보 표시: 대상 "C:\test\집\dev-workstation\test-dir"에서 "디렉터리
+ 제거" 작업을 수행합니다.
+자세한 정보 표시: 대상 "C:\test\집\dev-workstation\move-dir"에서 "디렉터리
+ 제거" 작업을 수행합니다.
+PS C:\test\집\dev-workstation> dir
+
+
+    디렉터리: C:\test\집\dev-workstation
+
+
+Mode                 LastWriteTime         Length Name                    
+----                 -------------         ------ ----                    
+d-----      2026-11-19   오전 9:51                app                     
+d-----      2026-11-19  오전 11:40                docker                  
+d-----      2026-11-19   오전 9:51                logs                    
+d-----      2026-11-19  오전 10:00                permission-test         
+d-----      2026-11-19   오전 9:54                practice                
+d-----      2026-11-19   오전 9:51                screenshots             
+-a----      2026-11-19   오후 3:36          16354 Hello Bind  mount스크린 
+                                                  샷.png                  
+-a----      2026-11-19   오후 3:36          16323 Hello Docker 스크린샷.pn
+                                                  g                       
+-a----      2026-11-19   오후 3:13              0 main.py                 
+-a----      2026-11-19   오후 4:07          17459 README.md               
+
+
+PS C:\test\집\dev-workstation> 
 
 
 
-
-## 핵심 용어 정리
-
-### 1. 터미널 · 파일 · 권한 관련 용어
-* **터미널(Terminal) / CLI**: 마우스 클릭 대신 글자(명령어)로 컴퓨터와 대화하는 창입니다. (예: PowerShell, bash)
-* **절대 경로**: 최상위 기준(`C:\` 또는 `/`)부터 시작하는 전체 주소입니다. 어디서 명령하든 같은 위치를 가리킵니다. (예: `C:\test\집\dev-workstation`)
-* **상대 경로**: 현재 내 위치를 기준으로 삼는 짧은 주소입니다. `.`은 현재 폴더, `..`은 한 단계 위 폴더를 뜻합니다. (예: `./README.md`)
-* **파일 권한(`r`, `w`, `x`)**: 파일이나 폴더를 누가 어떻게 다룰 수 있는지 정한 규칙입니다. `r`(읽기, 4), `w`(쓰기, 2), `x`(실행, 1)를 더해서 `755`나 `644` 같은 숫자로 표현합니다.
-
-### 2. Docker · 컨테이너 · 스토리지 관련 용어
-* **Docker(도커)**: 앱과 그 앱이 돌아가는 데 필요한 환경(설정, 라이브러리 등)을 한데 묶어 어디서든 똑같이 실행되게 해주는 도구입니다.
-* **이미지(Image)**: 컨테이너를 찍어내기 위한 설계도(틀)입니다. 한 번 만들어지면 기본 틀은 변하지 않습니다.
-* **컨테이너(Container)**: 이미지를 바탕으로 실제로 실행 중인 프로그램 공간입니다. 껐다 켜거나 지울 수 있고, 같은 이미지로 여러 개를 띄울 수 있습니다.
-* **Dockerfile**: 도커 이미지를 어떻게 만들지 적어 둔 레시피(설명서) 파일입니다. (`FROM`, `COPY` 같은 명령어로 구성)
-* **OrbStack**: 컨테이너를 가볍고 빠르게 실행하게 해주는 도구입니다. `sudo` 권한이 제한된 환경에서도 별도 관리자 권한 없이 Docker 엔진을 쓰기 위해 활용됩니다.
-* **포트 매핑(`-p 8080:5000`)**: 내 컴퓨터(호스트)의 문(`8080`)과 컨테이너 안의 문(`5000`)을 연결하는 것입니다. 그래야 브라우저에서 `localhost:8080`으로 접속해 컨테이너 안 앱을 볼 수 있습니다[cite: 1].
-* **바인드 마운트(Bind Mount)**: 내 컴퓨터의 특정 폴더를 컨테이너 안 폴더와 직접 연결하는 방식입니다. 내 컴퓨터에서 파일을 수정하면 컨테이너에도 바로 반영됩니다[cite: 1].
-* **볼륨(Volume)**: 도커가 직접 관리하는 데이터 저장 공간입니다. 컨테이너를 삭제(`docker rm`)해도 볼륨에 저장된 데이터는 지워지지 않고 남아 있습니다.
-
-### 3. Git · GitHub · 협업 관련 용어
-* **Git(깃)**: 내 컴퓨터에서 코드 변경 이력을 버전별로 저장하고 관리하는 프로그램입니다. ("언제, 누가, 무엇을 바꿨는지" 기록)
-* **GitHub(깃허브)**: Git으로 관리하는 코드를 인터넷(클라우드)에 올려두고 공유·협업하는 웹사이트/플랫폼입니다.
-* **저장소(Repository, Repo)**: 코드와 변경 이력, 문서, 이미지 등이 모여 있는 프로젝트 폴더 단위 공간입니다. 내 컴퓨터에 있으면 로컬 저장소, GitHub에 있으면 원격 저장소(`origin`)라고 부릅니다.
-* **브랜치(Branch)**: 작업 갈래(줄기)입니다. 보통 대표 갈래를 `main`이라고 부릅니다.
-* **`git add` / `commit` / `push`**: `add`는 이번에 저장할 파일 고르기, `commit`은 버전 스냅샷 찍기(내 컴퓨터에 기록), `push`는 GitHub 원격 저장소에 올리기입니다.
-* **`git pull` / 병합(Merge)**: `pull`은 GitHub에 올라온 최신 내용을 내 컴퓨터로 가져오는 것이고, `merge`는 두 작업 내역을 하나로 합치는 과정입니다.
-* **충돌(Conflict)**: 같은 파일의 같은 부분을 서로 다르게 수정해서 Git이 어느 쪽을 살릴지 자동으로 결정하지 못할 때 발생하는 상황입니다.
-* **LF / CRLF**: 줄바꿈 문자를 표시하는 방식 차이입니다. Windows(`CRLF`)와 Linux/macOS(`LF`)가 달라서 Git에서 안내 경고가 뜨기도 합니다.
