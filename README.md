@@ -317,4 +317,342 @@ d-----      2026-11-19   오전 9:51                screenshots
 PS C:\test\집\dev-workstation> 
 
 
+# chmod실행로그와 ls -l비교출력 증거
+ADMIN@2026□□□□□□ UCRT64 /c/test/집 (practice)
+$ cd /c/test/집/dev-workstation
 
+ADMIN@2026□□□□□□ UCRT64 /c/test/집/dev-workstation (main)
+$ ls -ld permission-test
+drwxr-xr-x 1 ADMIN 197121 0 Nov 19 10:00 permission-test/
+
+ADMIN@2026□□□□□□ UCRT64 /c/test/집/dev-workstation (main)
+$ ls -l permission-test/sample.txt
+-rw-r--r-- 1 ADMIN 197121 26 Nov 19 09:59 permission-test/sample.txt
+
+ADMIN@2026□□□□□□ UCRT64 /c/test/집/dev-workstation (main)
+$ chmod 755 permission-test/sample.txt
+
+ADMIN@2026□□□□□□ UCRT64 /c/test/집/dev-workstation (main)
+$ chmod 755 permission-test
+
+ADMIN@2026□□□□□□ UCRT64 /c/test/집/dev-workstation (main)
+$ ls -ld permission-test
+drwxr-xr-x 1 ADMIN 197121 0 Nov 19 10:00 permission-test/
+
+ADMIN@2026□□□□□□ UCRT64 /c/test/집/dev-workstation (main)
+$ ls -l permission-test/sample.txt
+-rw-r--r-- 1 ADMIN 197121 26 Nov 19 09:59 permission-test/sample.txt
+
+ADMIN@2026□□□□□□ UCRT64 /c/test/집/dev-workstation (main)
+$ 
+
+
+# docker --version과 데몬상태(docker info등)실제 출력 증거
+PS C:\test\집> cd dev-workstation
+PS C:\test\집\dev-workstation> docker --version
+Docker version 29.9.2, build a82e528
+PS C:\test\집\dev-workstation> docker info
+Client:
+ Version:    29.9.2
+ Context:    desktop-linux
+ Debug Mode: false
+ Plugins:
+  agent: Docker AI Agent Runner (Docker Inc.)
+    Version:  v1.152.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-agent.exe
+  ai: Docker AI Agent - Ask Gordon (Docker Inc.)
+    Version:  v1.33.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-ai.exe
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.38.1
+    Path:     C:\Program Files\Docker\cli-plugins\docker-buildx.exe
+  compose: Docker Compose (Docker Inc.)
+    Version:  v5.6.1
+    Path:     C:\Program Files\Docker\cli-plugins\docker-compose.exe
+  debug: Get a shell into any image or container (Docker Inc.)
+    Version:  0.49.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-debug.exe
+  desktop: Docker Desktop commands (Docker Inc.)
+    Version:  4.98.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-desktop.exe
+  dhi: CLI for managing Docker Hardened Images (Docker Inc.)
+    Version:  v0.0.9
+    Path:     C:\Program Files\Docker\cli-plugins\docker-dhi.exe
+  extension: Manages Docker extensions (Docker Inc.)
+    Version:  v0.2.32
+    Path:     C:\Program Files\Docker\cli-plugins\docker-extension.exe
+  init: Creates Docker-related starter files for your project (Docker Inc.)
+    Version:  v1.4.1
+    Path:     C:\Program Files\Docker\cli-plugins\docker-init.exe
+  mcp: Docker MCP Plugin (Docker Inc.)
+    Version:  v0.44.2
+    Path:     C:\Program Files\Docker\cli-plugins\docker-mcp.exe
+  model: Docker Model Runner (Docker Inc.)
+    Version:  v1.2.9
+    Path:     C:\Program Files\Docker\cli-plugins\docker-model.exe
+  offload: Docker Offload (Docker Inc.)
+    Version:  v0.7.35
+    Path:     C:\Program Files\Docker\cli-plugins\docker-offload.exe
+  pass: Docker Pass Secrets Manager Plugin (beta) (Docker Inc.)
+    Version:  v0.3.2
+    Path:     C:\Program Files\Docker\cli-plugins\docker-pass.exe
+  sandbox: "docker sandbox" is deprecated, use Docker Sandboxes instead (Docker Inc.)
+    Version:  v0.13.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-sandbox.exe
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.27.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-scout.exe
+
+Server:
+ Containers: 6
+  Running: 2
+  Paused: 0
+  Stopped: 4
+ Images: 7
+ Server Version: 29.9.2
+ Storage Driver: overlayfs
+  driver-type: io.containerd.snapshotter.v1
+ Logging Driver: local
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ CDI spec directories:
+  /etc/cdi
+  /var/run/cdi
+ Discovered Devices:
+  cdi: docker.com/gpu=webgpu
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 nvidia runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: b7a25261e029d68978bbf290df0a62fc819b3c51
+ runc version: v1.5.2-0-g29dd3dc2
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: builtin
+  cgroupns
+ Kernel Version: 6.18.58.1-microsoft-standard-WSL2
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 16
+ Total Memory: 3.756GiB
+ Name: docker-desktop
+ ID: 968b325e-3e0e-484f-8cf1-f33b151cb409
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ HTTP Proxy: http.docker.internal:3128
+ HTTPS Proxy: http.docker.internal:3128
+ No Proxy: hubproxy.docker.internal
+ Labels:
+  com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+ Experimental: false
+ Insecure Registries:
+  hubproxy.docker.internal:5555
+  127.0.0.0/8
+  ::1/128
+ Live Restore Enabled: false
+ Firewall Backend: iptables
+
+
+ # docker run hello-world 실행결과 증거
+ PS C:\test\집\dev-workstation> docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+
+# docker images 및 docker ps -a 출력 증거
+PS C:\test\집\dev-workstation> docker images
+                                                      i Info →   U  In Use
+IMAGE                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest     1e4c05b897a7       25.9kB         9.49kB    U   
+my-custom-web:latest   4a63261d65ed       93.6MB         26.3MB    U   
+my-first-web:latest    5550ccb9a3c3       93.6MB         26.4MB        
+my-web-image:latest    6780f1560724       93.6MB         26.3MB    U   
+nginx:alpine           0563c36f94a6       94.5MB         27.2MB    U   
+python:3.12-slim       b18b261e1b49        180MB         45.5MB        
+ubuntu:latest          d66b366dac61        163MB         45.9MB    U   
+PS C:\test\집\dev-workstation> docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+PS C:\test\집\dev-workstation> docker ps -a
+CONTAINER ID   IMAGE           COMMAND                   CREATED         STATUS                      PORTS                  NAMES
+6fd2351abbc7   hello-world     "/hello"                  2 minutes ago   Exited (0) 2 minutes ago                           sharp_heisenberg
+68b61d0dd54a   ubuntu          "sleep infinity"          21 hours ago    Exited (255) 2 hours ago                           vol-check-2
+e36c2c9f3df6   nginx:alpine    "/docker-entrypoint.…"   24 hours ago    Exited (255) 2 hours ago    0.0.0.0:8080->80/tcp   bind-mount-web
+7116327869ae   ubuntu          "bash"                    24 hours ago    Exited (0) 24 hours ago                            jolly_hellman
+64fe79c60849   hello-world     "/hello"                  24 hours ago    Exited (0) 24 hours ago                            crazy_visvesvaraya
+e8fb7d1f9b02   hello-world     "/hello"                  44 hours ago    Exited (0) 44 hours ago                            adoring_hugle
+8d7975a9e135   my-custom-web   "/docker-entrypoint.…"   2 weeks ago     Exited (255) 44 hours ago   0.0.0.0:8080->80/tcp   web-server
+PS C:\test\집\dev-workstation> 
+
+
+# docker build 실행 로그 증거
+PS C:\test\집\dev-workstation> docker build -t my-nginx-app:latest -f .\docker\Dockerfile .\docker
+[+] Building 1.0s (7/7) FINISHED                      docker:desktop-linux
+ => [internal] load build definition from Dockerfile                  0.1s
+ => => transferring dockerfile: 156B                                  0.1s
+ => [internal] load metadata for docker.io/library/nginx:alpine       0.1s
+ => [internal] load .dockerignore                                     0.0s
+ => => transferring context: 2B                                       0.0s
+ => [internal] load build context                                     0.1s
+ => => transferring context: 419B                                     0.1s
+ => CACHED [1/2] FROM docker.io/library/nginx:alpine@sha256:0563c36f  0.0s
+ => => resolve docker.io/library/nginx:alpine@sha256:0563c36f94a6d3e  0.0s
+ => [2/2] COPY app/index.html /usr/share/nginx/html/index.html        0.1s
+ => exporting to image                                                0.4s
+ => => exporting layers                                               0.1s
+ => => exporting manifest sha256:7dfdea72f117e963784f4a46e9b7ddc64b6  0.0s
+ => => exporting config sha256:453056a63dde42299b30822b3083f7f4efa72  0.0s
+ => => exporting attestation manifest sha256:9a775d628a25966c610f9f9  0.0s
+ => => exporting manifest list sha256:2cb2eb2f871de6b9c70862711ff0b5  0.0s
+ => => naming to docker.io/library/my-nginx-app:latest                0.0s
+ => => unpacking to docker.io/library/my-nginx-app:latest             0.1s
+PS C:\test\집\dev-workstation> docker images
+                                                      i Info →   U  In Use
+IMAGE                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-world:latest     1e4c05b897a7       25.9kB         9.49kB    U   
+my-custom-web:latest   4a63261d65ed       93.6MB         26.3MB    U   
+my-first-web:latest    5550ccb9a3c3       93.6MB         26.4MB        
+my-nginx-app:latest    2cb2eb2f871d       93.6MB         26.4MB        
+my-web-image:latest    6780f1560724       93.6MB         26.3MB    U   
+nginx:alpine           0563c36f94a6       94.5MB         27.2MB    U   
+python:3.12-slim       b18b261e1b49        180MB         45.5MB        
+ubuntu:latest          d66b366dac61        163MB         45.9MB    U   
+
+
+# 호스트 포트 접속의 실제 응답 증거
+PS C:\test\집\dev-workstation> docker run -d --name my-nginx-test -p 8080:80 my-nginx-app:latest
+cc62a299b1ea1b1a251dfccc4548aaca7d610fcc70de2a46754f3d91f9e46a0a
+PS C:\test\집\dev-workstation> docker ps
+CONTAINER ID   IMAGE                 COMMAND                   CREATED         STATUS         PORTS                                     NAMES
+cc62a299b1ea   my-nginx-app:latest   "/docker-entrypoint.…"   6 seconds ago   Up 5 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-nginx-test
+PS C:\test\집\dev-workstation> curl.exe -i http://localhost:8080
+HTTP/1.1 200 OK
+Server: nginx/1.31.9
+Date: Fri, 20 Nov 2026 02:47:09 GMT
+Content-Type: text/html
+Content-Length: 349
+Last-Modified: Thu, 19 Nov 2026 02:50:01 GMT
+Connection: keep-alive
+ETag: "6afe63d9-15d"
+Accept-Ranges: bytes
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bind Mount Test</title>
+</head>
+<body>
+    <h1>Hello, Bind Mount!</h1>
+    <p>Host file changes are reflected in the Docker container.</p>
+    <p>No image rebuild is required.</p>
+</body>
+</html>
+PS C:\test\집\dev-workstation> docker rm -f my-nginx-test
+my-nginx-test
+
+
+# 디렉토리 구조 설계 기준 및 폴더별 역할
+
+- **루트 디렉토리 (`dev-workstation/`)**
+  - **역할:** 프로젝트 전체 문서(`README.md`), 엔트리포인트 스크립트(`main.py`), 기능별 하위 폴더를 총괄하는 최상위 작업 공간입니다.
+  - **규칙:** 문서와 스크립트는 루트에 두고, 빌드 자산·실습 폴더·로그·스크린샷 등은 목적별 하위 폴더로 분리합니다.
+  - **예시:** `README.md`, `main.py`, `docker/`, `permission-test/`, `app/`, `logs/`, `practice/`, `screenshots/`
+
+- **`docker/` (커스텀 이미지 빌드 디렉토리)**
+  - **역할:** `Dockerfile`과 컨테이너 웹 서비스용 `app/` 하위 폴더를 관리합니다.
+  - **규칙:** 빌드 정의(`Dockerfile`)와 앱 소스를 함께 두어 `docker build` 실행 시 빌드 컨텍스트를 명확히 분리합니다.
+  - **예시:** `docker/Dockerfile`, `docker/app/`
+
+- **`permission-test/` (파일·디렉토리 권한 실습 폴더)**
+  - **역할:** 파일 및 하위 폴더의 권한 확인(`ls -l`)과 변경(`chmod`) 전·후를 검증하는 실습 공간입니다.
+  - **규칙:** 일반 소스 코드나 빌드 파일과 섞이지 않도록 별도 테스트 폴더로 격리합니다.
+  - **예시:** `permission-test/sample.txt`, `permission-test/test-folder/`
+
+- **`app/`, `practice/`, `logs/`, `screenshots/` (기능·실습·증빙 관리 폴더)**
+  - **역할:** 애플리케이션 관련 코드(`app/`), 추가 실습(`practice/`), 실행 기록(`logs/`), 화면 캡처 증빙(`screenshots/`)을 용도별로 구분해 보관합니다.
+  - **규칙:** 성격이 다른 산출물(로그, 스크린샷, 연습 파일)을 루트에 방치하지 않고 각 목적에 맞는 폴더에 정리합니다.
+  - **예시:** `app/`, `practice/`, `logs/`, `screenshots/`
+
+
+  # ### 포트 매핑 및 볼륨 매핑 재현 가이드
+
+#### 주요 옵션 설명
+- `-d`: 컨테이너를 백그라운드 모드로 실행합니다.
+- `--name <이름>`: 컨테이너에 이름을 부여해 조회·삭제를 쉽게 합니다.
+- `-p <호스트포트>:<컨테이너포트>`: 호스트 포트와 컨테이너 내부 포트를 연결합니다 (예: `-p 8080:5000`, `-p 8080:80`).
+- `-v <호스트경로>:<컨테이너경로>[:ro]`: 호스트 디렉토리나 볼륨을 컨테이너 경로에 연결해 데이터를 공유·보존합니다 (`:ro`는 읽기 전용).
+
+#### 1) 포트 매핑 재현 절차 (`-p 8080:5000` / `-p 8080:80`)
+1. 호스트 `8080` 포트와 컨테이너 `5000` 포트를 연결해 테스트 서버를 실행합니다.
+   ```powershell
+   docker run -d --name port-demo-5000 -p 8080:5000 python:3.12-slim python -m http.server 5000
+
+
+# 포트 충돌 진단 및 포트 해제 절차
+
+포트(예: `8080`, `5000`)가 이미 사용 중일 때는 아래 순서로 점유 주체를 확인하고 포트를 해제합니다.
+
+#### 1) 포트 사용 프로세스 및 컨테이너 진단
+- **Docker 컨테이너 확인 (공통)**
+  ```powershell
+  docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Ports}}\t{{.Status}}"
+
+
+# 두번째 트러블슈팅 사례와 관련된 로그 증거
+### 트러블슈팅 사례 #2: `docker build` 빌드 컨텍스트 경로 불일치로 인한 `COPY` 실패
+
+- **문제:** 저장소 루트(`C:\test\집\dev-workstation`)에서 빌드 컨텍스트를 `.`으로 지정해 `docker build -t my-nginx-app:latest -f .\docker\Dockerfile .`을 실행했을 때 `COPY app/index.html /usr/share/nginx/html/index.html` 단계에서 `/app/index.html: not found` 오류가 발생했습니다.
+- **가설:** `Dockerfile` 내부의 `COPY app/index.html` 경로는 `.\docker` 폴더를 빌드 컨텍스트 루트로 가정하고 작성되었는데, 빌드 컨텍스트를 루트(`.`)로 넘겨 실제 파일 경로(`docker/app/index.html`)와 어긋났을 가능성이 높다고 보았습니다.
+- **검증:** `Dockerfile`이 `COPY app/index.html`을 참조하는지 확인하고, 빌드 컨텍스트를 `.\docker`로 지정해 `docker build -t my-nginx-app:latest -f .\docker\Dockerfile .\docker`를 실행해 빌드가 `(7/7) FINISHED`로 성공하는지 확인했습니다.
+- **조치:** 빌드 컨텍스트를 `.\docker`로 지정해 이미지를 정상 빌드하고, 이후 빌드 시에도 `.\docker`를 컨텍스트로 사용하도록 명령을 고정했습니다.
+
+#### 관련 실행 로그
+```text
+PS C:\test\집\dev-workstation> docker build -t my-nginx-app:latest -f .\docker\Dockerfile .
+[+] Building 0.3s (6/6) FINISHED                      docker:desktop-linux
+ => ERROR [2/2] COPY app/index.html /usr/share/nginx/html/index.html  0.0s
+------
+ > [2/2] COPY app/index.html /usr/share/nginx/html/index.html:
+------
+Dockerfile:3
+--------------------
+   1 |     FROM nginx:alpine
+   2 |     
+   3 | >>> COPY app/index.html /usr/share/nginx/html/index.html
+   4 |     
+   5 |     EXPOSE 80
+--------------------
+ERROR: failed to build: failed to solve: failed to compute cache key: failed to calculate checksum of ref zb60vgxkahhg3ory7ozem70ta::0q0zn0gqm5ns5l0zkowhunng2: "/app/index.html": not found
+
+PS C:\test\집\dev-workstation> docker build -t my-nginx-app:latest -f .\docker\Dockerfile .\docker
+[+] Building 1.0s (7/7) FINISHED                      docker:desktop-linux
+ => [2/2] COPY app/index.html /usr/share/nginx/html/index.html        0.1s
+ => exporting to image                                                0.4s
+ => => naming to docker.io/library/my-nginx-app:latest                0.0s
+ 
