@@ -118,54 +118,117 @@
 ### 5.1 터미널 조작 로그
 현재 위치 확인, 목록 확인(숨김 파일 포함), 이동, 생성, 복사, 이동/이름변경, 삭제, 파일 내용 확인, 빈 파일 생성 명령과 출력입니다.
 ```text
-[여기에 터미널 기본 조작 명령어 및 출력 결과를 붙여넣으세요]
+[PS C:\Users\moon9506059202> cd dev-workstation
+PS C:\Users\moon9506059202\dev-workstation> pwd
+
+Path                                   
+----                                   
+C:\Users\moon9506059202\dev-workstation
+
+
+PS C:\Users\moon9506059202\dev-workstation> ls
+
+
+    디렉터리: C:\Users\moon9506059202\dev-workstation
+
+
+Mode                 LastWriteTime         Length Name               
+----                 -------------         ------ ----               
+d-----      2026-11-21   오후 5:30                docker             
+d-----      2026-11-21   오후 5:30                permission-test    
+d-----      2026-11-21   오후 5:30                practice           
+-a----      2026-11-21   오후 5:30          16354 Hello Bind  mount스
+                                                  크린샷.png         
+-a----      2026-11-21   오후 5:30          16323 Hello Docker 스크린
+                                                  샷.png             
+-a----      2026-11-21   오후 5:30              0 main.py            
+-a----      2026-11-21   오후 5:30          41514 README.md          
+
+
+PS C:\Users\moon9506059202\dev-workstation> mkdir test
+
+
+    디렉터리: C:\Users\moon9506059202\dev-workstation
+
+
+Mode                 LastWriteTime         Length Name               
+----                 -------------         ------ ----               
+d-----      2026-11-21   오후 5:39                test               
+
+
+PS C:\Users\moon9506059202\dev-workstation> cd .. ]
 ```
 
-### 5.2 권한 실습 및 변경 전·후 비교
-파일 1개, 디렉토리 1개에 대해 권한 확인 → 변경 → 변경 후 확인 결과입니다.
+### 5.2 Docker 설치 및 기본 점검 (`docker --version`, `docker info`)
 ```text
-[여기에 파일/디렉토리 권한 변경 전/후 명령어 및 출력 결과를 붙여넣으세요]
-```
-
-### 5.3 Docker 설치 및 기본 점검 (`docker --version`, `docker info`)
-```text
-[여기에 docker --version 및 docker info 명령어와 출력 결과를 붙여넣으세요]
+[PS C:\Users\moon9506059202\dev-workstation> docker --version
+Docker version 29.9.2, build a82e528
+PS C:\Users\moon9506059202\dev-workstation> docker info
+Client:
+ Version:    29.9.2
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  agent: Docker AI Agent Runner (Docker Inc.)
+    Version:  v1.152.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-agent.exe
+  ai: Docker AI Agent - Ask Gordon (Docker Inc.)
+    Version:  v1.33.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-ai.exe
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.38.1
+    Path:     C:\Program Files\Docker\cli-plugins\docker-buildx.exe
+  compose: Docker Compose (Docker Inc.)
+    Version:  v5.6.1
+    Path:     C:\Program Files\Docker\cli-plugins\docker-compose.exe
+  debug: Get a shell into any image or container (Docker Inc.)
+    Version:  0.49.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-debug.exe
+  desktop: Docker Desktop commands (Docker Inc.)
+    Version:  4.97.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-desktop.exe
+  dhi: CLI for managing Docker Hardened Images (Docker Inc.)
+    Version:  v0.0.9
+    Path:     C:\Program Files\Docker\cli-plugins\docker-dhi.exe
+  extension: Manages Docker extensions (Docker Inc.)
+    Version:  v0.2.32
+    Path:     C:\Program Files\Docker\cli-plugins\docker-extension.exe
+  init: Creates Docker-related starter files for your project (Docker Inc.)
+    Version:  v1.4.1
+    Path:     C:\Program Files\Docker\cli-plugins\docker-init.exe
+  mcp: Docker MCP Plugin (Docker Inc.)
+    Version:  v0.44.2
+    Path:     C:\Program Files\Docker\cli-plugins\docker-mcp.exe
+  model: Docker Model Runner (Docker Inc.)
+    Version:  v1.2.9
+    Path:     C:\Program Files\Docker\cli-plugins\docker-model.exe
+  offload: Docker Offload (Docker Inc.)
+    Version:  v0.7.21
+    Path:     C:\Program Files\Docker\cli-plugins\docker-offload.exe
+  pass: Docker Pass Secrets Manager Plugin (beta) (Docker Inc.)
+    Version:  v0.3.2
+    Path:     C:\Program Files\Docker\cli-plugins\docker-pass.exe
+  sandbox: "docker sandbox" is deprecated, use Docker Sandboxes instead (Docker Inc.)
+    Version:  v0.13.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-sandbox.exe
+  scout: Docker Scout (Docker Inc.)
+    Version:  v1.27.0
+    Path:     C:\Program Files\Docker\cli-plugins\docker-scout.exe
+]
 ```
 
 ### 5.4 Docker 기본 운영 명령 (`images`, `ps`, `ps -a`, `logs`, `stats`)
 ```text
-[여기에 docker images, docker ps, docker ps -a, docker logs, docker stats 명령어와 출력 결과를 붙여넣으세요]
+[PS C:\Users\moon9506059202\dev-workstation> docker images
+failed to connect to the docker API at npipe:////./pipe/docker_engine; check if the path is correct and if the daemon is running: open //./pipe/docker_engine: The system cannot find the file specified.
+PS C:\Users\moon9506059202\dev-workstation> docker images
+                                                 i Info →   U  In Use
+IMAGE   ID             DISK USAGE   CONTENT SIZE   EXTRA
+PS C:\Users\moon9506059202\dev-workstation> docker ps
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O   PIDS]
 ```
 
-### 5.5 컨테이너 실행 실습 (`hello-world`, `ubuntu`, 종료/유지 및 `attach`/`exec` 비교)
-- **`hello-world` 및 `ubuntu` 실행/내부 명령(`ls`, `echo` 등) 로그**:
-```text
-[여기에 hello-world 및 ubuntu 컨테이너 실행/내부 명령 출력 결과를 붙여넣으세요]
-```
-- **컨테이너 종료/유지 및 `attach` vs `exec` 관찰 요약**:
-  - [메인 프로세스 종료 시 컨테이너 종료 여부, `-it` / `-d` 유지 방식, `attach`와 `exec`의 동작 차이를 정리하세요]
-
-### 5.6 커스텀 이미지 제작 (`Dockerfile` 및 웹 소스)
-- **선택한 베이스**: [예: `nginx:alpine` 또는 `ubuntu` / `python` 등 선택한 베이스 이미지/예시 기재]
-- **커스텀 포인트 및 목적**: [정적 콘텐츠/설정 교체, 패키지 설치, 환경변수 설정 등 커스텀 항목별 목적 요약]
-- **빌드/실행 명령 및 결과 로그**:
-```text
-[여기에 docker build 및 docker run 명령어와 출력 결과를 붙여넣으세요]
-```
-- **관련 파일 링크**: [Dockerfile](./docker/Dockerfile), [웹 소스 디렉토리](./docker/app/)
-
-### 5.7 포트 매핑 접속 증거 및 바인드 마운트 반영 증거
-- **포트 매핑 접속**: 호스트 포트와 컨테이너 포트를 연결해 브라우저에서 `localhost:8080` 접속을 확인했습니다[cite: 1].
-- **바인드 마운트 반영**: 호스트 파일 변경 내용이 이미지 재빌드 없이 컨테이너에 반영되는 것을 확인했습니다[cite: 1].
-- **바인드 마운트 실행 명령 및 호스트 변경 전/후 비교**:
-```text
-[여기에 바인드 마운트 실행 명령 및 호스트 파일 변경 전/후 비교 로그를 붙여넣으세요]
-```
-- **접속 및 바인드 마운트 스크린샷**:
-  - 브라우저 주소창(`localhost:8080`)과 `"Hello, Bind Mount!"` 응답 화면을 캡처한 이미지를 저장소(예: `./assets/localhost-8080.png`)에 추가한 뒤 아래 링크를 활성화하세요[cite: 1].
-  - `![포트 매핑 및 바인드 마운트 검증 화면](./assets/localhost-8080.png)`
-
-### 5.8 Docker 볼륨 영속성 검증
+### 5.5 Docker 볼륨 영속성 검증
 볼륨 생성 → 컨테이너 연결 및 데이터 기록 → 컨테이너 삭제(`docker rm -f`) → 새 컨테이너 연결 후 데이터 유지 확인까지의 실행 로그입니다.
 ```powershell
 PS C:\test\집\dev-workstation> docker volume create mission-vol
@@ -182,7 +245,7 @@ vol-check
 persisted-data-test
 ```
 
-### 5.9 Git 설정 및 GitHub / VS Code 연동 증거
+### 5.6 Git 설정 및 GitHub / VS Code 연동 증거
 - **`git config --list` 출력 결과**:
 ```powershell
 PS C:\test\집\dev-workstation> git config --global user.name "moon"
